@@ -1,0 +1,14 @@
+<header class="navbar">
+<input type="checkbox" id="nav-toggle" class="navbar__toggle-label">
+    <nav class="navbar__nav">
+       <ul>
+       <!--User moet ingelogd zijn om navbar te zien-->
+       <li class="navbar__nav__item"><a routerLink="/products">Home</a></li>
+        <li class="navbar__nav__item"><a routerLink="/products">Producten</a></li>
+        <li class="navbar__nav__item"><a routerLink="/cart">Winkelmand ({{amountOfProductsInCart}})</a></li>
+        </ul>
+    </nav>
+     <label for="nav-toggle" class="navbar__label">
+     <span></span>
+     </label>
+ </header>

@@ -1,0 +1,20 @@
+<h2>Product detail</h2>
+<a
+  style="cursor: pointer;"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+<article class="productCard">
+        <figure class="productCard__thumb">
+          <img class="productCard__thumb__image" src="{{product.imagePath}}" alt="{{product.name}}">
+        </figure>
+        <section class="productCard__details">
+          <header class="productCard__details__header">
+            <h2 class="productCard__details__header__name">{{product.name}}</h2>
+          </header>
+            <p class="productCard__details__description">{{product.description}}</p>
+            <p class="productCard__details__description">{{product.price}}</p>
+          </section>
+        <div class="productCard__details__actions">
+          <button (click)="onAddToCart()" class="productCard__details__productCard__details__button button">Plaats in winkelmand!</button>
+        </div>
+</article>

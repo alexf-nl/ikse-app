@@ -1,0 +1,16 @@
+<div class="row cart-item-row align-items-center">
+    <div class="col-sm-8">
+        <h4>{{ product.name }}</h4>
+        <strong>{{ product.description }}</strong>
+    </div>
+
+    <div class="col-sm-3">
+        {{ product.price}}
+    </div>
+
+    <div class="col-sm-1">
+        <button class="btn btn-sm btn-dark" (click)="removeFromCart()">X</button>
+    
+    </div>
+
+</div>

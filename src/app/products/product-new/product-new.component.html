@@ -1,0 +1,26 @@
+<h1>Voeg een nieuw product toe!</h1>
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<form (ngSubmit)="onNewProduct(productForm)" ngModel #productForm="ngForm" *ngIf="!isLoading">
+    <div class="form-group">
+        <label>Naam product</label>
+        <input type="text" class="form-control" placeholder="Productnaam" ngModel name="naam" required naam>
+    </div>
+
+    <div class="form-group">
+        <label>Omschrijving</label>
+        <input type="text" class="form-control" placeholder="Omschrijving" ngModel name="description" required description>
+    </div>
+
+    <div class="form-group">
+        <label>Afbeelding</label>
+        <input type="file" class="form-control" placeholder="Afbeelding"  ngModel name="imagePath" file >
+    </div>
+
+    <div class="form-group">
+        <label>Prijs product</label>
+        <input type="text" class="form-control" placeholder="Prijs"  ngModel name="price" required price>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Opslaan</button>
+</form>
+

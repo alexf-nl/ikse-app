@@ -5,7 +5,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-
+import { ProductNewComponent } from './products/product-new/product-new.component';
 
 
 const appRoutes: Routes = [
@@ -15,6 +15,7 @@ const appRoutes: Routes = [
   {path: 'cart', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
+  {path: 'admin/products/new', component: ProductNewComponent}
 
 
 ];

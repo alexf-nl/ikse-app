@@ -9,7 +9,7 @@ export class ShoppingCartService {
   public productsInCartChanged: Subject<Product[]> = new Subject<Product[]>();
 
   private productsInCart: Product[] = [
-    new Product(1, 'PS5', 'Dit is ps5', '', 20),
+    new Product('PS5', 'Dit is ps5', '', 20),
   ];
 
 

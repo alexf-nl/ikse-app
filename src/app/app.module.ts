@@ -23,6 +23,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { SignupComponent } from './auth/signup/signup.component';
+import { ProductNewComponent } from './products/product-new/product-new.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { SignupComponent } from './auth/signup/signup.component';
     ShoppingCartListItemComponent,
     LoginComponent,
     SignupComponent,
+    ProductNewComponent,
     
   ],
   imports: [

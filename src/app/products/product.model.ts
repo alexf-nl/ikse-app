@@ -1,13 +1,11 @@
 export class Product {
-    public productId: number
-    public name: string;
+    public naam: string;
     public description: string;
     public imagePath: string;
     public price: number;
 
-    constructor(productId: number, name: string, description: string, imagePath: string, price: number) {
-        this.productId = productId;
-        this.name = name;
+    constructor(naam: string, description: string, imagePath: string, price: number) {
+        this.naam = naam;
         this.description = description;
         this.imagePath = imagePath;
         this.price = price;

@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
+const Product = require('./models/products');
+
 const app = express();
 mongoose.connect("mongodb+srv://ikse:iksealex@ikse.qwzff.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 .then(() => {
@@ -32,12 +34,23 @@ app.post('/api/products/new', (req, res, next) => {
         imagePath: req.body.imagePath,
         price: req.body.price
     });
-    console.log(post);
+    product.save();
+    console.log(product);
     res.status(201).json({ 
         message: 'Product succesvol toegevoegd'
     });
 });
-app.use('/api/products',(req,res, next) => {
+
+app.get('/api/products', (req, res, next) => {
+    Product.find()
+    .then(documents => {
+        res.status(200).json({
+            message: 'Producten succesvol gefetched',
+            products: documents
+        });
+    });
+});
+/*app.use('/api/products',(req,res, next) => {
     const producten = [
         {productId: 1, name: 'Ps5', description: 'dit is een beschrijving', imagePath: '456756', price: 55},
         {productId: 2, name: 'Ps4', description: 'dit is een beschrijving', imagePath: '456756', price: 55},
@@ -47,6 +60,6 @@ app.use('/api/products',(req,res, next) => {
         producten: producten
     })
 });
-
+*/
 app.use("/api/user", userRoutes);
 module.exports = app;

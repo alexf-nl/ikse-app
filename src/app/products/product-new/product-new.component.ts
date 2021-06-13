@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
+import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class ProductNewComponent implements OnInit {
   onNewProduct(form: NgForm) {
     console.log(form.value);    
     console.log('ja');
-    this.productService.addProduct(form.value.naam, form.value.description, form.value.imagePath, form.value.price);
+    this.productService.addProduct(new Product(form.value.naam, form.value.description, form.value.imagePath, form.value.price));
   }
   
   

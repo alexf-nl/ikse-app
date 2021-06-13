@@ -15,6 +15,6 @@
             <p class="productCard__details__description">{{product.price}}</p>
           </section>
         <div class="productCard__details__actions">
-          <a href="products/{{product.naam}}" class="productCard__details__productCard__details__button button">Bekijk dit product!</a>
+          <a [routerLink]="['get', {id: product.id}]" class="productCard__details__productCard__details__button button">Bekijk dit product!</a>
         </div>
 </article>

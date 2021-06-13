@@ -20,38 +20,51 @@ export class ProductService {
 
 
 
-  getProducts() {
-    this.http
-    .get<{message: string, products: any}>(
-      'http://localhost:3000/api/products'
-    )
-    .pipe(map((productenData) => {
-      return productenData.products.map(product => {
-        return {
-          naam: product.naam,
-          description: product.description,
-          imagePath: product.imagePath,
-          price: product.price,
-          id: product._id
-        }
+  // async getProducts() : Promise<Product[]> {
+  //   let arrayProducts : Product[] = [];
+  //   await this.http
+  //   .get<{message: string, products: any[]}>(
+  //     'http://localhost:3000/api/products'
+  //   )
+  //   .pipe(map((productenData) => {
+  //     return productenData.products.map(product => {
+  //       return {
+  //         naam: product.naam,
+  //         description: product.description,
+  //         imagePath: product.imagePath,
+  //         price: product.price,
+  //         id: product._id
+  //       }
+  //     })
+  //   }))
+  //   .subscribe((transformedProducts) => {
+  //     for(let i = 0; i < transformedProducts.length; i++) {
+  //       arrayProducts.push(transformedProducts[i]);
+  //     }
+  //     //this.products = transformedProducts;
+  //   });
+  //   return arrayProducts;
+  // }
+
+  getProducts(): Product[] {
+    this.products.length = 0;
+    this.http.get('http://localhost:3000/api/products').subscribe(response => {
+      response['products'].forEach((product) => {
+        this.products.push(new Product(product.naam, product.description, product.imagePath, product.price, product._id));
       })
-    }))
-    .subscribe((transformedProducts) => {
-      console.log(transformedProducts);
-      this.products = transformedProducts;
-      return this.products.slice();
-    });
+    })
+    return this.products;
   }
 
+  getProduct(id: number) {
+    console.log(this.products);
+    console.log(this.products.find(x => x.id === id));
+    console.log(' TEST');
 
-
-  getProduct(index: number) {
-      return this.products[index];
-      console.log(this.products);
+      return this.products.find(x => x.id === id);
   }
 
-  addProduct(naam:string, description:string, imagePath:string, price:number) {
-    const product: Product = {naam: naam, description: description, imagePath: imagePath, price: price};
+  addProduct(product: Product) {
     this.http.post<{message: string}>('http://localhost:3000/api/products/new', product)
     .subscribe((responseData) => {
       console.log(responseData);

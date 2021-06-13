@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -9,12 +12,20 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
   products: Product[];
+  subscription: Subscription;
+  private productsObservable : Observable<any[]> ; 
+
 
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
-    console.log(this.products);
-    this.productService.getProducts();
+  async ngOnInit() {
+    try{
+    this.products = this.productService.getProducts();
+    console.log('werkt');
+    console.log(this.products)
+    }catch(error) {
+      console.log(error);
+    }
   }
   
 

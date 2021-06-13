@@ -11,7 +11,7 @@ import { ProductNewComponent } from './products/product-new/product-new.componen
 const appRoutes: Routes = [
   {path: '', redirectTo: '/products', pathMatch: 'full' },
   {path: 'products', component: ProductsComponent},
-  {path: 'products/:id', component: ProductDetailComponent},
+  {path: 'products/get', component: ProductDetailComponent},
   {path: 'cart', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},

@@ -5,8 +5,13 @@
        <li class="navbar__nav__item"><a routerLink="/products">Home</a></li>
         <li class="navbar__nav__item"><a routerLink="/products">Producten</a></li>
         <li class="navbar__nav__item"><a routerLink="/cart">Winkelmand ({{amountOfProductsInCart}})</a></li>
-        <li class="navbar__nav__item"><a routerLink="/login">Login</a></li>
-        <li class="navbar__nav__item"><a routerLink="/signup">Register</a></li>
+        <li *ngIf="userIsAuthenticated">
+            <a routerLink="/cart">Nieuwe product aanmaken</a>
+        </li>
+        <li *ngIf="!userIsAuthenticated" class="navbar__nav__item"><a routerLink="/login">Login</a></li>
+        
+        <li  *ngIf="!userIsAuthenticated" class="navbar__nav__item"><a routerLink="/signup">Register</a></li>
+        <li *ngIf="userIsAuthenticated" class="navbar__nav__item"><a routerLink="/signup">Uitloggen</a></li>
 
         </ul>
     </nav>

@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
     next();
 });
@@ -50,16 +50,15 @@ app.get('/api/products', (req, res, next) => {
         });
     });
 });
-/*app.use('/api/products',(req,res, next) => {
-    const producten = [
-        {productId: 1, name: 'Ps5', description: 'dit is een beschrijving', imagePath: '456756', price: 55},
-        {productId: 2, name: 'Ps4', description: 'dit is een beschrijving', imagePath: '456756', price: 55},
-    ]
-    res.status(200).json({
-        message: 'Producten gefetcht',
-        producten: producten
-    })
+
+app.delete('/api/products/delete/:id', (req, res, next) => {
+    Product.deleteOne({_id: req.params.id}).then(result => {
+        res.status(200).json({
+            message: 'Product succesvol verwijderd',
+        });
+    });
 });
-*/
+
+
 app.use("/api/user", userRoutes);
 module.exports = app;

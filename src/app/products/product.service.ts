@@ -64,6 +64,8 @@ export class ProductService {
       return this.products.find(x => x.id === id);
   }
 
+
+
   addProduct(product: Product) {
     this.http.post<{message: string}>('http://localhost:3000/api/products/new', product)
     .subscribe((responseData) => {
@@ -71,6 +73,14 @@ export class ProductService {
     });
     this.products.push(product);
     
+  }
+
+  deleteProduct(id: string) {
+    this.http.delete('http://localhost:3000/api/products/delete/' + id)
+    .subscribe(() => {
+      console.log('verwijderd');
+    });
+
   }
 
 

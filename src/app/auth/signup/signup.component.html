@@ -12,5 +12,6 @@
         
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Signup</button>
+    <button type="submit" class="btn btn-primary"  [disabled]="!signupForm.valid">Signup</button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
 </form>

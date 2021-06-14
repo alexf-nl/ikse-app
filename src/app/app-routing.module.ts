@@ -6,6 +6,7 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductNewComponent } from './products/product-new/product-new.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const appRoutes: Routes = [
@@ -15,7 +16,7 @@ const appRoutes: Routes = [
   {path: 'cart', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'admin/products/new', component: ProductNewComponent}
+  {path: 'admin/products/new', component: ProductNewComponent, canActivate: [AuthGuard]}
 
 
 ];
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

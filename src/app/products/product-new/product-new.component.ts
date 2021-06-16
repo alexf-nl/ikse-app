@@ -18,6 +18,9 @@ export class ProductNewComponent implements OnInit {
   }
   isLoading = false;
 
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0]; //file die de user selecteert
+  }
 
   onNewProduct(form: NgForm) {
     console.log(form.value);    

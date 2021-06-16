@@ -7,6 +7,7 @@ import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductNewComponent } from './products/product-new/product-new.component';
 import { AuthGuard } from './auth/auth.guard';
+import { AuthAdminGuard } from './auth/auth-admin.guard';
 
 
 const appRoutes: Routes = [

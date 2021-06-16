@@ -49,13 +49,14 @@ router.post("/login", (req, res, next) => {
             })
         }
         const token = jwt.sign(
-            {email: fetchedUser.email, userId: fetchedUser._id}, 
+            {email: fetchedUser.email, userId: fetchedUser._id, role: fetchedUser.role}, 
             'secret_alexs1118551ikseAPI_heelErgBeveiligdVoorAssessment', 
             {expiresIn: '1h' }
         );
         res.status(200).json({
             token: token,
-            expiresIn: 3600
+            expiresIn: 3600,
+            role: fetchedUser.role
         })
 
     })

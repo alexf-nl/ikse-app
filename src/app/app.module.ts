@@ -14,7 +14,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ShoppingCartListComponent } from './shopping-cart/shopping-cart-list/shopping-cart-list.component';
 import { ShoppingCartListItemComponent } from './shopping-cart/shopping-cart-list/shopping-cart-list-item/shopping-cart-list-item.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
@@ -25,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ProductNewComponent } from './products/product-new/product-new.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { AuthGuardInterceptor } from './auth/auth-guard-interceptor';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
     MatSliderModule,
@@ -55,7 +57,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     MatProgressSpinnerModule,
     MatInputModule,
   ],
-  providers: [ProductService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [ProductService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, {provide: HTTP_INTERCEPTORS, useClass: AuthGuardInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

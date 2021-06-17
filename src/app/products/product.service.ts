@@ -58,21 +58,28 @@ export class ProductService {
 
   getProduct(id: number) {
     console.log(this.products);
-    console.log(this.products.find(x => x.id === id));
+    console.log(this.products.find(x => x.id === 'id'));
     console.log(' TEST');
 
-      return this.products.find(x => x.id === id);
+      return this.products.find(x => x.id === 'id');
   }
 
 
 
-  addProduct(product: Product) {
-    this.http.post<{message: string}>('http://localhost:3000/api/products/new', product)
+  addProduct(naam: string, description: string, imagePath: File, price: string) {
+    const productData = new FormData();
+    productData.append("naam", naam);
+    productData.append("description", description);
+    productData.append("imagePath", imagePath, naam);
+    productData.append("price", price);
+    this.http.post<{message: string, product: Product}>('http://localhost:3000/api/products/new', productData)
     .subscribe((responseData) => {
-      console.log(responseData);
+      const product: Product = 
+      {
+        naam: naam, description: description, imagePath: responseData.product.imagePath, price: price, id: responseData.product.id
+      } 
+      this.products.push(product);
     });
-    this.products.push(product);
-    
   }
 
   deleteProduct(id: string) {
@@ -85,3 +92,7 @@ export class ProductService {
 
 
 }
+function naam(arg0: string, naam: any) {
+  throw new Error('Function not implemented.');
+}
+

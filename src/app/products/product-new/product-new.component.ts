@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 import { mimeType } from './mime-type.validator';
@@ -11,16 +12,28 @@ import { mimeType } from './mime-type.validator';
 })
 export class ProductNewComponent implements OnInit {
 
-  product: Product;
+  private product: Product;
   isLoading = false;
   form: FormGroup;
   imagePreview: string;
   private mode = "create";
-  private postId: string;
+  private id: string;
   
-  constructor(public productService: ProductService) { }
+  constructor(public productService: ProductService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('id')) {
+        this.mode = 'edit';
+        this.id = paramMap.get('id');
+        this.product = this.productService.getProduct(this.id);
+      } else {
+        this.mode = 'create';
+        this.id = null;
+
+      }
+    });
+    
     this.form = new FormGroup({
       naam: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]

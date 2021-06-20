@@ -11,6 +11,7 @@ import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
+  userIsAdmin = false;
   private authListenerSubs: Subscription;
   public amountOfProductsInCart: number = 0;
   private subscription: Subscription;
@@ -19,11 +20,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userIsAuthenticated = this.authService.getIsAuth();
+    this.userIsAdmin = this.authService.getAdmin();
+
     this.authListenerSubs = this.authService
     .getAuthStatusListener()
     .subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
     });
+
+    
+    this.authListenerSubs = this.authService
+    .getAuthStatusListener()
+    .subscribe(isAdmin => {
+      this.userIsAdmin = isAdmin;
+    });
+
+
     this.amountOfProductsInCart = this.shoppingCartService.getAll().length;
     this.subscription = this.shoppingCartService.productsInCartChanged
     .subscribe((products: Product[])=> {

@@ -21,12 +21,18 @@ export class ProductListComponent implements OnInit {
   async ngOnInit() {
     try{
     this.products = this.productService.getProducts();
-    console.log('werkt');
-    console.log(this.products)
     }catch(error) {
       console.log(error);
     }
   }
+
+  onDelete(id: number) {
+    this.productService.deleteProduct(id);
+  }
+
+
+
+
   
 
 }

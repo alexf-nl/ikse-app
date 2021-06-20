@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/shopping-cart/shopping-cart.service';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -10,12 +11,12 @@ import { ProductService } from '../product.service';
 })
 export class ProductDetailComponent implements OnInit {
   product: Product;
-  id: string;
+  id: number;
 
   constructor(private productService: ProductService, 
               private route: ActivatedRoute,
               private router: Router, 
-              private shoppingCartService: ShoppingCartService){
+              private shoppingCartService: ShoppingCartService, private http: HttpClient) {
               }
 
   ngOnInit(): void {
@@ -29,6 +30,14 @@ export class ProductDetailComponent implements OnInit {
   
   public onAddToCart() {
     this.shoppingCartService.add(this.product);
+  }
+
+  public onDelete(id: number) {
+    this.http.delete("http://localhost:3000/api/products/delete/" + id)
+    .subscribe(() => {
+      this.router.navigate(['/products'])
+
+    });
   }
 
 }

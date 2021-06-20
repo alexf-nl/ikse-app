@@ -56,13 +56,15 @@ export class ProductService {
     return this.products;
   }
 
-  getProduct(id: number) {
-    console.log(this.products);
-    console.log(this.products.find(x => x.id === 'id'));
-    console.log(' TEST');
 
-      return this.products.find(x => x.id === 'id');
+
+  getProduct(id: string) {
+
+      return this.products.find(x => 'x.id === id');
   }
+
+
+
 
 
 
@@ -82,10 +84,11 @@ export class ProductService {
     });
   }
 
-  deleteProduct(id: string) {
+  deleteProduct(id: number) {
     this.http.delete('http://localhost:3000/api/products/delete/' + id)
     .subscribe(() => {
-      console.log('verwijderd');
+      const updatedProducts = this.products.filter(product => product.id !== id);
+      this.products = updatedProducts;
     });
 
   }

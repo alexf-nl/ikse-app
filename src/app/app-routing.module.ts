@@ -17,7 +17,9 @@ const appRoutes: Routes = [
   {path: 'cart', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'admin/products/new', component: ProductNewComponent, canActivate: [AuthGuard]}
+  {path: 'admin/products/new', component: ProductNewComponent, canActivate: [AuthGuard]},
+  {path: 'admin/products/edit', component: ProductNewComponent, canActivate: [AuthGuard]}, //we hergebruiken productnew component
+
 
 
 ];

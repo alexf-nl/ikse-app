@@ -13,7 +13,7 @@ import { AuthAdminGuard } from './auth/auth-admin.guard';
 const appRoutes: Routes = [
   {path: '', redirectTo: '/products', pathMatch: 'full' },
   {path: 'products', component: ProductsComponent},
-  {path: 'products/get', component: ProductDetailComponent},
+  {path: 'products/get/:id', component: ProductDetailComponent},
   {path: 'cart', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},

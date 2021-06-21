@@ -113,15 +113,7 @@ export class ProductService {
       productData.append("imagePath", imagePath, naam);
       productData.append("price", price);
 
-    } else {
-      productData = {
-        id: id,
-        naam: naam,
-        description: description,
-        imagePath: imagePath,
-        price: price
-      };
-    }
+    } 
     this.http
       .put("http://localhost:3000/api/products/" + id, productData)
       .subscribe(response => {

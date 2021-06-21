@@ -83,7 +83,7 @@ router.delete('/delete/:id', (req, res, next) => {
 
 router.put(
     "/:id",
-    multer({ storage: storage }).single("image"),
+    multer({ storage: storage }).single("imagePath"),
     (req, res, next) => {
       let imagePath = req.body.imagePath;
       if (req.file) {
@@ -97,7 +97,7 @@ router.put(
         imagePath: imagePath,
         price: req.body.price
       });
-      console.log(producct);
+      console.log(product);
       Product.updateOne({ _id: req.params.id }, product).then(result => {
         res.status(200).json({ message: "Update successful!" });
       });

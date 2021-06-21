@@ -82,7 +82,7 @@ export class ProductNewComponent implements OnInit {
     console.log('ja');
     this.productService.addProduct(this.form.value.naam, this.form.value.description, this.form.value.imagePath, this.form.value.price);
   } else {
-    this.productService.updateProduct(this.form.value.id, this.form.value.naam, this.form.value.description, this.form.value.imagePath, this.form.value.price);
+    this.productService.updateProduct(this.id, this.form.value.naam, this.form.value.description, this.form.value.imagePath, this.form.value.price);
 
   }
   this.form.reset();

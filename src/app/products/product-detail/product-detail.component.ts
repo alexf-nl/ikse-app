@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/shopping-cart/shopping-cart.service';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
@@ -20,13 +20,21 @@ export class ProductDetailComponent implements OnInit {
               }
 
   ngOnInit(): void {
-    this.route.params.subscribe(
-        (params: Params) => {
-          //this.product = this.productService.getProduct(params.id);
-    }   
-  );
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('id')) {
+        this.id = paramMap.get('id');
+        this.productService.getProduct(this.id).subscribe(productData => {
+          this.product = {
+            id: productData._id,
+            naam: productData.naam,
+            description: productData.description,
+            imagePath: productData.imagePath, 
+            price: productData.price
+          };
+        });
+      } 
+    });
   }
-
   
   public onAddToCart() {
     this.shoppingCartService.add(this.product);

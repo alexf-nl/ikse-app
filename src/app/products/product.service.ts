@@ -65,6 +65,7 @@ export class ProductService {
   getProduct(id: string) {
     return this.http.get<{ _id: string, naam: string, description: string, imagePath: string, price: string}>(
       "http://localhost:3000/api/products/" + id
+      
     );
       //return this.products.find(x => 'x.id === id');
   }

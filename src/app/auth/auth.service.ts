@@ -71,11 +71,14 @@ export class AuthService {
           this.role = role;
           const expiresInDuration = response.expiresIn;
           this.setAuthTimer(expiresInDuration);
+          this.isAuthenticated = true;
           if(role == 'Admin') {
             this.isAdmin = true;
             console.log(this.isAdmin);
+          } else {
+            this.isAdmin = false;
+            console.log(this.isAdmin);
           }
-          this.isAuthenticated = true;
           this.authStatusListener.next(true);
           const now = new Date();
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);

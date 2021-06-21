@@ -1,15 +1,15 @@
-<h1>Voeg een nieuw product toe!</h1>
-
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <form [formGroup]="form" (ngSubmit)="onNewProduct()"  *ngIf="!isLoading">
     <div class="form-group">
         <label>Naam product</label>
         <input type="text" class="form-control" placeholder="Productnaam"  name="naam" formControlName="naam">
+              <mat-error *ngIf="form.get('naam').invalid">Kies een naam.</mat-error>
     </div>
 
     <div class="form-group">
         <label>Omschrijving</label>
         <input type="text" class="form-control" placeholder="Omschrijving" formControlName="description" name="description" >
+        <mat-error *ngIf="form.get('description').invalid">Voeg een omschrijving.</mat-error>
     </div>
 
     <div class="form-group">
@@ -25,6 +25,7 @@
     <div class="form-group">
         <label>Prijs product</label>
         <input type="text" class="form-control" placeholder="Prijs"  formControlName="price" name="price" >
+              <mat-error *ngIf="form.get('price').invalid">Voeg een prijs toe.</mat-error>
     </div>
     <button type="submit" class="btn btn-primary">Opslaan</button>
 </form>

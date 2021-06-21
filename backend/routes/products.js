@@ -50,6 +50,16 @@ router.post('/new', multer({storage: storage}).single("imagePath"), (req, res, n
     console.log(product);
 });
 
+router.get("/:id", (req, res, next) => {
+    Product.findById(req.params.id).then(post => {
+      if (post) {
+        res.status(200).json(post);
+      } else {
+        res.status(404).json({ message: "Post not found!" });
+      }
+    });
+  });
+
 
 router.get('', (req, res, next) => {
     Product.find()
@@ -68,6 +78,31 @@ router.delete('/delete/:id', (req, res, next) => {
         });
     });
 });
+
+
+
+router.put(
+    "/:id",
+    multer({ storage: storage }).single("image"),
+    (req, res, next) => {
+      let imagePath = req.body.imagePath;
+      if (req.file) {
+        const url = req.protocol + "://" + req.get("host");
+        imagePath = url + "/images/" + req.file.filename
+      }
+      const product = new Product({
+        _id: req.body.id,
+        naam: req.body.naam,
+        description: req.body.description,
+        imagePath: imagePath,
+        price: req.body.price
+      });
+      console.log(producct);
+      Product.updateOne({ _id: req.params.id }, product).then(result => {
+        res.status(200).json({ message: "Update successful!" });
+      });
+    }
+  );
 
 
 module.exports = router;

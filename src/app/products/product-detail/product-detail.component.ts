@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductDetailComponent implements OnInit {
   product: Product;
-  id: number;
+  id: string;
 
   constructor(private productService: ProductService, 
               private route: ActivatedRoute,
@@ -22,7 +22,7 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(
         (params: Params) => {
-          this.product = this.productService.getProduct(params.id);
+          //this.product = this.productService.getProduct(params.id);
     }   
   );
   }
@@ -32,7 +32,7 @@ export class ProductDetailComponent implements OnInit {
     this.shoppingCartService.add(this.product);
   }
 
-  public onDelete(id: number) {
+  public onDelete(id: string) {
     this.http.delete("http://localhost:3000/api/products/delete/" + id)
     .subscribe(() => {
       this.router.navigate(['/products'])

@@ -19,8 +19,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private shoppingCartService: ShoppingCartService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.userIsAuthenticated = this.authService.getIsAuth();
     this.userIsAdmin = this.authService.getAdmin();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+    .getAuthStatusListener()
+    .subscribe(isAdmin => {
+      this.userIsAdmin = isAdmin;
+    });
 
     this.authListenerSubs = this.authService
     .getAuthStatusListener()
@@ -28,12 +33,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.userIsAuthenticated = isAuthenticated;
     });
 
-    
-    this.authListenerSubs = this.authService
-    .getAuthStatusListener()
-    .subscribe(isAdmin => {
-      this.userIsAdmin = isAdmin;
-    });
+  
 
 
     this.amountOfProductsInCart = this.shoppingCartService.getAll().length;
@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     .subscribe((products: Product[])=> {
       this.amountOfProductsInCart = products.length;
     });
+
   }
 
   onLogout() : void {

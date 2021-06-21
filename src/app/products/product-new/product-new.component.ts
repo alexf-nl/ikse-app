@@ -26,7 +26,23 @@ export class ProductNewComponent implements OnInit {
       if (paramMap.has('id')) {
         this.mode = 'edit';
         this.id = paramMap.get('id');
-        this.product = this.productService.getProduct(this.id);
+        this.isLoading = true;
+        this.productService.getProduct(this.id).subscribe(productData => {
+          this.isLoading = false;
+          this.product = {
+            id: productData._id,
+            naam: productData.naam,
+            description: productData.description,
+            imagePath: productData.imagePath, 
+            price: productData.price
+          };
+          this.form.setValue({
+            naam: this.product.naam,
+            description: this.product.description,
+            imagePath: this.product.imagePath,
+            price: this.product.price
+          });
+        });
       } else {
         this.mode = 'create';
         this.id = null;
@@ -43,7 +59,7 @@ export class ProductNewComponent implements OnInit {
         validators: [Validators.required],
         asyncValidators: [mimeType]
       }),
-      price: new FormControl(null, { validators: [Validators.required] }),
+      price: new FormControl(null, { validators: [Validators.required,  Validators.minLength(1)] }),
 
     });
   }
@@ -62,13 +78,14 @@ export class ProductNewComponent implements OnInit {
 
 
   onNewProduct() {
-
-    console.log(this.form.value);    
+    if(this.mode == 'create') {
     console.log('ja');
     this.productService.addProduct(this.form.value.naam, this.form.value.description, this.form.value.imagePath, this.form.value.price);
-    this.form.reset();
-  }
-  
-  
+  } else {
+    this.productService.updateProduct(this.form.value.id, this.form.value.naam, this.form.value.description, this.form.value.imagePath, this.form.value.price);
 
+  }
+  this.form.reset();
+
+  }
 }

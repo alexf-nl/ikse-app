@@ -8,7 +8,7 @@ const productRoutes = require("./routes/products");
 
 const app = express();
 
-mongoose.connect("mongodb+srv://ikse:iksealex@ikse.qwzff.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://ikse:" + process.env.MONGO_ATLAS_PW + "@ikse.qwzff.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
   .then(() => {
     console.log("Connected to database!");
   })

@@ -1,0 +1,6 @@
+{
+    "env": {
+        "MONGO_ATLAS_PW": "iksealex",
+        "JWT_KEY":  "secret_alexs1118551ikseAPI_heelErgBeveiligdVoorAssessment"
+    }
+}

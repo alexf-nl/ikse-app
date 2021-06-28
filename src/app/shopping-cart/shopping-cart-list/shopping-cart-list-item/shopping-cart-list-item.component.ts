@@ -17,6 +17,5 @@ export class ShoppingCartListItemComponent implements OnInit {
 
     public removeFromCart() { 
       this.remove.emit(this.index);
-      console.log("verwijder");
     }
 }

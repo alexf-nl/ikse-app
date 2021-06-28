@@ -3,8 +3,7 @@
     <nav class="navbar__nav">
        <ul>
         <li class="navbar__nav__item"><a routerLink="/products">Producten</a></li>
-        <li class="navbar__nav__item" *ngIf="userIsAuthenticated" class="navbar__nav__item"><a routerLink="/cart">Winkelmand ({{amountOfProductsInCart}})</a></li>
-      <li *ngIf="userIsAuthenticated && userIsAdmin"><a routerLink="/admin/products/new">(Admin) Nieuwe product aanmaken</a></li>
+        <li class="navbar__nav__item" *ngIf="userIsAuthenticated && !userIsAdmin" class="navbar__nav__item"><a routerLink="/cart">Winkelmand ({{amountOfProductsInCart}})</a></li>
 
         <li *ngIf="!userIsAuthenticated" class="navbar__nav__item"><a routerLink="/login">Inloggen</a></li>
         

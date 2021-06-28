@@ -16,6 +16,7 @@ export class ShoppingCartService {
   constructor() { }
 
     public add(product: Product) {
+      
       this.productsInCart.push(product);
       this.productsInCartChanged.next(this.productsInCart.slice());
     }

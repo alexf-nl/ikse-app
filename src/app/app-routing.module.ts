@@ -8,6 +8,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductNewComponent } from './products/product-new/product-new.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthAdminGuard } from './auth/auth-admin.guard';
+import { OrderComponent } from './order/order.component';
 
 
 const appRoutes: Routes = [
@@ -18,7 +19,9 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'admin/products/new', component: ProductNewComponent, canActivate: [AuthGuard]},
-  {path: 'admin/products/edit/:id', component: ProductNewComponent, canActivate: [AuthGuard]}, //we hergebruiken productnew component
+  {path: 'admin/products/edit/:id', component: ProductNewComponent, canActivate: [AuthGuard]}, 
+  {path: 'order-created', component: OrderComponent} 
+
 
 
 

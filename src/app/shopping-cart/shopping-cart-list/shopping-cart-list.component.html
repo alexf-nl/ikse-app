@@ -4,6 +4,7 @@
     </div>
 <div *ngIf="products.length > 0; else noProductsInCart">
        <app-shopping-cart-list-item *ngFor="let product of products; let i = index" [product]="product" [index]="i" (remove)="onRemoveItemFromList($event)"></app-shopping-cart-list-item>
+        <button class="button" (click)="bestellen()">Bestel</button>
 </div>
 
 <ng-template #noProductsInCart>

@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   //url voor apicall - alex
-  apiUrl: "http://localhost:3000/api"
+  apiUrl: "https://ikse-api-s1118551.herokuapp.com/api"
 };
 
 /*

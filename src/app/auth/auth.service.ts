@@ -35,7 +35,6 @@ export class AuthService {
   }
 
   getAdmin() {
-    console.log(this.isAdmin);
     return this.isAdmin;
 
   }
@@ -78,17 +77,18 @@ export class AuthService {
           const expiresInDuration = response.expiresIn;
           this.setAuthTimer(expiresInDuration);
           this.isAuthenticated = true;
+          this.isAdmin = false;
           if(role == 'Admin') {
             this.isAdmin = true;
           } else {
             this.isAdmin = false;
           }
-          this.authStatusListener.next(true);
           const now = new Date();
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           console.log(expirationDate);
           this.saveAuthData(token, expirationDate);
           this.router.navigate(["/"]);
+          this.authStatusListener.next(true);
         }
       }, error => {
         this.authStatusListener.next(false);

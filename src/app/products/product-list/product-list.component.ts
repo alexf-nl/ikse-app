@@ -3,6 +3,7 @@ import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 
 
 @Component({
@@ -10,15 +11,34 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   products: Product[];
-  subscription: Subscription;
+  private subscription: Subscription;
+  userIsAuthenticated = false;
+  userIsAdmin = false;
+  private authListenerSubs: Subscription;
+
   private productsObservable : Observable<any[]> ; 
 
 
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute, private authService: AuthService) { }
 
-  async ngOnInit() {
+   ngOnInit() {
+    this.userIsAdmin = this.authService.getAdmin();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+    .getAuthStatusListener()
+    .subscribe(isAdmin => {
+      this.userIsAdmin = isAdmin;
+    });
+
+    this.authListenerSubs = this.authService
+    .getAuthStatusListener()
+    .subscribe(isAuthenticated => {
+      this.userIsAuthenticated = isAuthenticated;
+    });
+
+
     try{
     this.products = this.productService.getProducts();
     }catch(error) {
@@ -28,6 +48,10 @@ export class ProductListComponent implements OnInit {
 
   onDelete(id: string) {
     this.productService.deleteProduct('id');
+  }
+
+  ngOnDestroy() : void {
+    this.authListenerSubs.unsubscribe();
   }
 
 

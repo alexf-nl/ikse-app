@@ -176,11 +176,12 @@
 }
 
 
-@media (min-width: 35rem) {
+@media (min-width: 15rem) {
   .producten {
     display: grid;
     grid-column-gap: 3rem;
     grid-template-columns: repeat(1,minmax(0,1fr));
+    margin-top: 10rem;
 
   }
 }
@@ -193,7 +194,7 @@
 
   }
 }
-@media (min-width: 70.5rem) {
+@media (min-width: 85.5rem) {
 .producten {
   grid-template-columns: repeat(3,minmax(0,1fr));
   display: grid;

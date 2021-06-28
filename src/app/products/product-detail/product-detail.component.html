@@ -1,9 +1,10 @@
-<h2>Product detail</h2>
+<section class="productDetail">
+<h2 class="detail">Product detail</h2>
 <a
   style="cursor: pointer;"
   routerLinkActive="active"
   class="list-group-item clearfix">
-<article class="productCard">
+<article class="productCard detail__product">
         <figure class="productCard__thumb">
           <img class="productCard__thumb__image" src="{{product.imagePath}}" alt="{{product.naam}}">
         </figure>
@@ -14,8 +15,9 @@
             <p class="productCard__details__description">{{product.description}}</p>
             <p class="productCard__details__description">{{product.price}}</p>
           </section>
-        <div class="productCard__details__actions">
-          <button (click)="onAddToCart()" class="productCard__details__productCard__details__button button">Plaats in winkelmand!</button>
-          <button (click)="onDelete(product.id)">(Admin) Product verwijderen</button>
+        <div class="productCard__details__actions" *ngIf="userIsAuthenticated">
+          <button *ngIf="userIsAuthenticated && !userIsAdmin" (click)="onAddToCart()" class="productCard__details__productCard__details__button button">Plaats in winkelmand!</button>
+          <button *ngIf="userIsAdmin" class="button" (click)="onDelete(product.id)">(Admin) Product verwijderen</button>
         </div>
-</article>
+</article></a>
+</section>

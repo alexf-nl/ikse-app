@@ -29,6 +29,7 @@ import { AuthGuardInterceptor } from './auth/auth-guard-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ErrorComponent } from './error/error.component';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ErrorComponent } from './error/error.component';
     LoginComponent,
     SignupComponent,
     ProductNewComponent,
-    ErrorComponent
+    ErrorComponent,
+    OrderComponent
     
   ],
   imports: [

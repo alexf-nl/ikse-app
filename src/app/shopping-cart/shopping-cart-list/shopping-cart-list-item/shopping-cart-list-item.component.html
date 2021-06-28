@@ -2,15 +2,15 @@
 
 
    <article class="product__naam">
-        <h4>{{ product.naam }}</h4>
+        <h2>Naam:{{ product.naam }}</h2>
     </article>
 
     <article class="product__price">
-        {{ product.price}}&euro;
+        <h3>Prijs: {{ product.price}}&euro;</h3>
     </article>
 
     <article class="col-sm-1">
-        <button class="button" (click)="removeFromCart()">X</button>
+        <button class="btn btn-warning" (click)="removeFromCart()">Verwijder product</button>
     
     </article>
 

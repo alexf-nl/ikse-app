@@ -10,3 +10,18 @@ input[type="file"] {
 .image-preview img {
     height: 100%;
 }
+
+form {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10rem;
+}
+
+input[type='text'], input[type='number'] {
+    padding: 2rem;
+    font-size: 1.5rem;
+}
+
+label {
+    font-size: 2rem;
+}

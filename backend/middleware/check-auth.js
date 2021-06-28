@@ -6,6 +6,6 @@ module.exports = (req, res, next) => {
         jwt.verify(token, 'secret_alexs1118551ikseAPI_heelErgBeveiligdVoorAssessment');
         next(); 
     } catch (error) {
-        res.status(401).json({message: 'Authorizatie gefaald. Log opnieuw in'});
+        res.status(401).json({message: 'Authorizatie gefaald. Herlaad de pagina en probeer opnieuw.'});
     }
 };

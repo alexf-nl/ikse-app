@@ -24,9 +24,9 @@
 
     <div class="form-group">
         <label>Prijs product</label>
-        <input type="text" class="form-control" placeholder="Prijs"  formControlName="price" name="price" >
+        <input type="number" class="form-control" placeholder="Prijs"  formControlName="price" name="price" >
               <mat-error *ngIf="form.get('price').invalid">Voeg een prijs toe.</mat-error>
     </div>
-    <button type="submit" class="btn btn-primary">Opslaan</button>
+    <button type="submit" class="button">Opslaan</button>
 </form>
 

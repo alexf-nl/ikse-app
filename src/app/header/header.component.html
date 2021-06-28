@@ -2,17 +2,14 @@
 <input type="checkbox" id="nav-toggle" class="navbar__toggle-label">
     <nav class="navbar__nav">
        <ul>
-       <li class="navbar__nav__item"><a routerLink="/products">Home</a></li>
         <li class="navbar__nav__item"><a routerLink="/products">Producten</a></li>
         <li class="navbar__nav__item" *ngIf="userIsAuthenticated" class="navbar__nav__item"><a routerLink="/cart">Winkelmand ({{amountOfProductsInCart}})</a></li>
-        <li *ngIf="userIsAdmin">
-            <a routerLink="/admin/products/new">(Admin) Nieuwe product aanmaken</a>
-        </li>
+      <li *ngIf="userIsAuthenticated && userIsAdmin"><a routerLink="/admin/products/new">(Admin) Nieuwe product aanmaken</a></li>
+
         <li *ngIf="!userIsAuthenticated" class="navbar__nav__item"><a routerLink="/login">Inloggen</a></li>
         
         <li  *ngIf="!userIsAuthenticated" class="navbar__nav__item"><a routerLink="/signup">Registereren</a></li>
-        <li *ngIf="userIsAuthenticated" class="navbar__nav__item"><button mat-button (click)="onLogout()"> Uitloggen</button></li>
-
+        <li *ngIf="userIsAuthenticated" class="navbar__nav__item"><button mat-button (click)="onLogout()" class="button"> Uitloggen</button></li>
         </ul>
     </nav>
      <label for="nav-toggle" class="navbar__label">

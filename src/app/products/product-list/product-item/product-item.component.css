@@ -1,12 +1,11 @@
 .productCard {
-    display: flex;
-    flex-direction: column;
-      width: 25%;
-      position: relative;
-      box-shadow: 0 2px 7px #dfdfdf;
-      margin: 5rem auto;
-      background: #fafafa;
-      height: 65rem;
+  display: flex; 
+    width: 75%;
+    position: relative;
+    box-shadow: 0 2px 7px #dfdfdf;
+    margin: 5rem auto;
+    background: #fafafa;
+    height: 75rem;
   }
   
   
@@ -54,3 +53,6 @@
       color: #999;
   }
   
+.productCard__details__actions {
+  margin-left: 5rem;
+}

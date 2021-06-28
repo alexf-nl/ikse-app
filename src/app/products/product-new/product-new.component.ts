@@ -79,7 +79,6 @@ export class ProductNewComponent implements OnInit {
 
   onNewProduct() {
     if(this.mode == 'create') {
-    console.log('ja');
     this.productService.addProduct(this.form.value.naam, this.form.value.description, this.form.value.imagePath, this.form.value.price);
   } else {
     this.productService.updateProduct(this.id, this.form.value.naam, this.form.value.description, this.form.value.imagePath, this.form.value.price);

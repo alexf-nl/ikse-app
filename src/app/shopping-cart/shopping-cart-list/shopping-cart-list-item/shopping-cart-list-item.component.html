@@ -1,16 +1,17 @@
-<div class="row cart-item-row align-items-center">
-    <div class="col-sm-8">
+<section class="winkelmand__product">
+
+
+   <article class="product__naam">
         <h4>{{ product.naam }}</h4>
-        <strong>{{ product.description }}</strong>
-    </div>
+    </article>
 
-    <div class="col-sm-3">
-        {{ product.price}}
-    </div>
+    <article class="product__price">
+        {{ product.price}}&euro;
+    </article>
 
-    <div class="col-sm-1">
-        <button class="btn btn-sm btn-dark" (click)="removeFromCart()">X</button>
+    <article class="col-sm-1">
+        <button class="button" (click)="removeFromCart()">X</button>
     
-    </div>
+    </article>
 
-</div>
+</section>

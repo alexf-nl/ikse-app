@@ -26,6 +26,9 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ProductNewComponent } from './products/product-new/product-new.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { AuthGuardInterceptor } from './auth/auth-guard-interceptor';
+import { ErrorInterceptor } from './error-interceptor';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -42,6 +45,7 @@ import { AuthGuardInterceptor } from './auth/auth-guard-interceptor';
     LoginComponent,
     SignupComponent,
     ProductNewComponent,
+    ErrorComponent
     
   ],
   imports: [
@@ -56,8 +60,12 @@ import { AuthGuardInterceptor } from './auth/auth-guard-interceptor';
     MatFormFieldModule,
     MatProgressSpinnerModule,
     MatInputModule,
+    MatDialogModule
   ],
-  providers: [ProductService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, {provide: HTTP_INTERCEPTORS, useClass: AuthGuardInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  providers: [ProductService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+      {provide: HTTP_INTERCEPTORS, useClass: AuthGuardInterceptor, multi: true},
+      {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
 export class AppModule { }

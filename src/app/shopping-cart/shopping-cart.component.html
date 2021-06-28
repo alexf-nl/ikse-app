@@ -1,10 +1,10 @@
-<div class="row">
-    <div class="col-xl">
+<article class="winkelmand">
+    <div>
         <h1>Winkelmand</h1>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-xl">
-        <app-shopping-cart-list [products]="products" (remove)="removeProductFromCart($event)"></app-shopping-cart-list>
-</div>
+
+    <div>
+            <app-shopping-cart-list [products]="products" (remove)="removeProductFromCart($event)"></app-shopping-cart-list>
+    </div>
+</article>

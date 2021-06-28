@@ -47,6 +47,34 @@
     font-family: 'Heebo', sans-serif;
     font-weight: 800;
   }
+
+  input[type="file"] {
+    visibility: hidden;
+}
+
+.image-preview {
+    height: 5rem;
+    margin: 1rem 0;
+}
+
+.image-preview img {
+    height: 100%;
+}
+
+form {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10rem;
+}
+
+input[type='text'], input[type='number'] {
+    padding: 2rem;
+    font-size: 1.5rem;
+}
+
+label {
+    font-size: 2rem;
+}
   
   p {
     font-weight: 400;

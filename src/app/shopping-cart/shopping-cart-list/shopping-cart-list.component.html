@@ -1,19 +1,15 @@
-<div class="row">
-
-    <div class="col-xl">
+<div>
+    <div>
         <strong>Producten in winkelmand</strong>
     </div>
-</div>
-<div class="row" *ngIf="products.length > 0; else noProductsInCart">
-  <div clss="col-xl">
-        <app-shopping-cart-list-item *ngFor="let product of products; let i = index" [product]="product" [index]="i" (remove)="onRemoveItemFromList($event)"></app-shopping-cart-list-item>
-    </div>
+<div *ngIf="products.length > 0; else noProductsInCart">
+       <app-shopping-cart-list-item *ngFor="let product of products; let i = index" [product]="product" [index]="i" (remove)="onRemoveItemFromList($event)"></app-shopping-cart-list-item>
 </div>
 
 <ng-template #noProductsInCart>
-    <div class="row">
-        <div class="col-xl">
-            <strong>Er zijn geen producten in winkelmand</strong>
+    <div>
+        <div>
+            <strong>Er zijn geen producten in winkelmand. Voeg een product toe.</strong>
         </div>
     </div>
 </ng-template>

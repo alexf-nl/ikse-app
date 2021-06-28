@@ -1,9 +1,5 @@
-<a
-  style="cursor: pointer;"
-  [routerLink]="[index]"
-  routerLinkActive="active"
-  class="list-group-item clearfix">
-<article class="productCard">
+
+<article class="productCard detail">
         <figure class="productCard__thumb">
           <img class="productCard__thumb__image" src="{{product.imagePath}}" alt="{{product.naam}}">
         </figure>
@@ -12,12 +8,11 @@
             <h2 class="productCard__details__header__name">{{product.naam}}</h2>
           </header>
             <p class="productCard__details__description">{{product.description}}</p>
-            <p class="productCard__details__description">{{product.price}}</p>
+            <h2 class="productCard__details__description">{{product.price}}&euro;</h2>
           </section>
         <div class="productCard__details__actions">
-          <a [routerLink]="['get', product.id]" class="productCard__details__productCard__details__button button">Bekijk dit product!</a>
-        </div>
-        <div class="productCard__details__actions">
-          <a [routerLink]="['/admin/products/edit', product.id]" class="productCard__details__productCard__details__button button">Bewerken!</a>
+          <a [routerLink]="['get', product.id]" class="productCard__details__productCard__details__button button"  *ngIf="userIsAuthenticated">Bekijk dit product!</a>
+          <a [routerLink]="['/login']" class="productCard__details__productCard__details__button button"  *ngIf="!userIsAuthenticated">Log in om product te bekijken</a>
+          <a [routerLink]="['/admin/products/edit', product.id]" class="productCard__details__productCard__details__button button" *ngIf="userIsAdmin">Product Bewerken!</a>
         </div>
 </article>

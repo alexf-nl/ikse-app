@@ -13,11 +13,12 @@ export class ShoppingCartService {
 
 
 
+
   constructor() { }
 
-    public add(product: Product) {
+    public add(product: any) {
       
-      this.productsInCart.push(product);
+      console.log(this.productsInCart.push(product));
       this.productsInCartChanged.next(this.productsInCart.slice());
     }
 

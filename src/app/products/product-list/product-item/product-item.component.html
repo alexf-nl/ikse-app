@@ -6,8 +6,8 @@
           <header class="productCard__details__header">
             <h2 class="productCard__details__header__name">{{product.naam}}</h2>
           </header>
-            <p class="productCard__details__description">{{product.description}}</p>
-            <h2 class="productCard__details__description">{{product.price}}&euro;</h2>
+            <p class="productCard__details__description">{{product.description | slice: 0:70}} ...</p>
+            <h2 class="productCard__details__description">{{product.price | currency: 'EUR'}}</h2>
           </section>
         <div class="productCard__details__actions">
           <a [routerLink]="['get', product.id]" class="productCard__details__productCard__details__button button"  *ngIf="userIsAuthenticated">Bekijk dit product!</a>

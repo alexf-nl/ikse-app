@@ -1,6 +1,7 @@
-<section class="product_toevoegen" *ngIf="userIsAdmin">
-        <a class="button" routerLink="/admin/products/new">(Admin) Nieuwe product aanmaken</a>
-</section>
+
+   <article class="product_toevoegen" *ngIf="userIsAdmin">
+            <a class="button" routerLink="/admin/products/new">(Admin) Nieuwe product aanmaken</a>
+    </article>
 <section class="producten">
     <app-product-item *ngFor="let productEl of products; let i = index" [product]="productEl" [index]="i"></app-product-item>
 </section>

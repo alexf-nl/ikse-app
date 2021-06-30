@@ -12,12 +12,11 @@ export class ShoppingCartComponent implements OnInit {
 
   public products: Product[] = [];
   private subscription: Subscription;
-  
+
   constructor(private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
     this.products = this.shoppingCartService.getAll();
-    
     this.subscription = this.shoppingCartService.productsInCartChanged
     .subscribe((products: Product[]) => {
       this.products = products;

@@ -11,9 +11,11 @@ export class ShoppingCartListComponent implements OnInit {
 
   @Input() public products: Product[] = [];
   @Output() public remove: EventEmitter<number> = new EventEmitter<number>();
+  public totaalBedrag: number;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.totaalBedrag = 0;
   }
 
   public onRemoveItemFromList(index: number) {

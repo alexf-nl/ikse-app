@@ -1,6 +1,6 @@
-<div>
+<div class="producten__winkelwagen">
     <div>
-        <strong>Producten in winkelmand</strong>
+        <h1><strong>Producten in winkelmand</strong></h1>
     </div>
 <div *ngIf="products.length > 0; else noProductsInCart">
        <app-shopping-cart-list-item *ngFor="let product of products; let i = index" [product]="product" [index]="i" (remove)="onRemoveItemFromList($event)"></app-shopping-cart-list-item>

@@ -181,8 +181,11 @@
     display: grid;
     grid-column-gap: 3rem;
     grid-template-columns: repeat(1,minmax(0,1fr));
-    margin-top: 10rem;
 
+  }
+
+  .product_toevoegen {
+    padding: 5rem;
   }
 }
 

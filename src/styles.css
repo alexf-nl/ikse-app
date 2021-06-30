@@ -282,16 +282,15 @@ label {
   
   .button {
     display: inline-block;
-    width: 25rem;
+    width: 20rem;
     padding: .8rem;
+    margin-top: -0.5rem;
     color: white;
     border: .2rem solid #282828;
     background-color: var(--button-color) !important;
     text-align: center;
-    margin-left: 3rem;
     outline: none;
     text-decoration: none;
-    margin-top: .5rem;
   }
 
   .productCard__details__actions {

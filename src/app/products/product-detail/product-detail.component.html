@@ -13,7 +13,7 @@
             <h2 class="productCard__details__header__name">{{product.naam}}</h2>
           </header>
             <p class="productCard__details__description">{{product.description}}</p>
-            <p class="productCard__details__description">{{product.price}}</p>
+            <p class="productCard__details__description">{{product.price | currency:'EUR'}}</p>
           </section>
         <div class="productCard__details__actions" *ngIf="userIsAuthenticated">
           <button *ngIf="userIsAuthenticated && !userIsAdmin" (click)="onAddToCart()" class="productCard__details__productCard__details__button button">Plaats in winkelmand!</button>
